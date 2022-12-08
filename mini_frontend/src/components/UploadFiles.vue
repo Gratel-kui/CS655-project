@@ -34,7 +34,7 @@
         </div>
       </div>
       <div v-if="previewImage">
-        <div>
+        <div width="400" height="500">
           <img class="preview my-3" :src="previewImage" alt="" />
         </div>
       </div>
@@ -42,13 +42,9 @@
         {{ message }}
       </div>
 
-      <div>
-        image caption by clip_pre: {{caption}}
-      </div>
-
 
       <div class="card mt-3">
-        <div class="card-header">图片列表</div>
+        <div class="card-header">Image List</div>
         <ul class="list-group list-group-flush">
           <li
             class="list-group-item"
