@@ -7,10 +7,10 @@ client = replicate.Client(api_token=API_TOKEN)
 
 
 def imageToText(path):
-    image_paths = ["./images/Kodak/kodim01.png"]
+    image_paths = [path]
 
     clip = ClipApi(client=client)
-    captions = clip.get_caption_list(image_paths)
+    captions = clip.get_caption_list(path)
 
     print(captions)
     return captions[0]
