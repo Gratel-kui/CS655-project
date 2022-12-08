@@ -1,7 +1,6 @@
 import axios from "axios";
-export default axios.create({
-  baseURL: "http://127.0.0.1:5000",
-  headers: {
-    "Content-type": "application/json"
-  }
-});
+
+baseURL: "http://10.10.1.2";
+route: ":8080/upload"
+
+export default baseURL + route;

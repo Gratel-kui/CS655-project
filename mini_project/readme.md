@@ -3,6 +3,16 @@
 
 ## 1 introduction
 
+install conda first and then run the project.
+
+Install conda:
+`bash conda.bash`
+
+Start project: 
+`bash run.bash` 
+
+
+
 ## 2 deployment
 
 ### 2.1 conda install
@@ -26,3 +36,8 @@ pip install -r requirement.txt
 ### 2.3 run app.py
 
 python app.py
+
+
+```
+
+```

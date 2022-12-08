@@ -70,6 +70,7 @@
 <script>
 import axios from "axios";
 import { defineComponent } from 'vue';
+import url from '../http-common'
 
 export default {
   name: "upload-image",
@@ -123,7 +124,7 @@ export default {
       let time_before = new Date().getTime();
 
       axios
-        .post("http://192.86.139.93:8080/upload", this.fileParam)
+        .post(url, this.fileParam)
         .then((response) => {
             let rtt = new Date().getTime() - time_before;
             console.log(response.data);
