@@ -10,11 +10,12 @@ def imageToText(path):
     image_paths = [path]
 
     clip = ClipApi(client=client)
-    captions = clip.get_caption_list(path)
+    captions = clip.get_caption_list(image_paths)
 
     print(captions)
     return captions[0]
 
 
 if __name__ == '__main__':
-    imageToText()
+    path = './images/files/1.png'
+    imageToText(path)
