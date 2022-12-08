@@ -34,8 +34,8 @@
         </div>
       </div>
       <div v-if="previewImage">
-        <div width="400" height="500">
-          <img class="preview my-3" :src="previewImage" alt="" />
+        <div >
+          <img width="512" height="512" class="preview my-3" :src="previewImage" alt="" />
         </div>
       </div>
       <div v-if="message" class="alert alert-secondary" role="alert">
