@@ -47,25 +47,6 @@
       </div>
 
 
-      <!-- <el-table
-        :data="tableData"
-        style="width: 100%">
-        <el-table-column
-          prop="date"
-          label="日期"
-          width="180">
-        </el-table-column>
-        <el-table-column
-          prop="name"
-          label="姓名"
-          width="180">
-        </el-table-column>
-        <el-table-column
-          prop="address"
-          label="地址">
-        </el-table-column>
-      </el-table> -->
-
       <div class="card mt-3">
         <div class="card-header">图片列表</div>
         <ul class="list-group list-group-flush">
@@ -79,17 +60,43 @@
         </ul>
       </div>
     </div>
+
+    <a-table
+      class="ant-table-striped"
+      size="middle"
+      :columns="columns"
+      :data-source="data"
+      :row-class-name="(_record, index) => (index % 2 === 1 ? 'table-striped' : null)"
+    />
   </template>
 
 
 <script>
 import axios from "axios";
-import UploadService from "../services/UploadFilesService";
+import { defineComponent } from 'vue';
+
 export default {
   name: "upload-image",
+  
   data() {
-
+    
     return {
+      columns : [
+        { title: 'ImageName', dataIndex: 'imageName' },
+        { title: 'caption', dataIndex: 'caption'},
+        { title: 'ImageSize', dataIndex: 'imageSize' },
+        { title: 'RTT', dataIndex: 'rtt' },
+        { title: 'Throughput', dataIndex: 'throughput'},
+      ],
+      data : [
+        {
+          key: '1',
+          name: 'John Brown',
+          age: 32,
+          address: 'New York No. 1 Lake Park',
+        },
+      ],
+
       selectedFiles: undefined,
       progressInfos: [],
       message: "",
@@ -97,24 +104,8 @@ export default {
       currentImage: undefined,
 
       caption: "nope",
+      dataSource: []
 
-      tableData: [{
-            date: '2016-05-02',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            date: '2016-05-04',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1517 弄'
-          }, {
-            date: '2016-05-01',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1519 弄'
-          }, {
-            date: '2016-05-03',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1516 弄'
-          }]
     };
   },
   methods: {
@@ -134,48 +125,33 @@ export default {
       let that = this
 
       // time before: todo
-      var time_before =
+      let time_before = new Date().getTime();
 
       axios
         .post("http://127.0.0.1:5000/upload", this.fileParam)
         .then((response) => {
+            let rtt = new Date().getTime() - time_before;
             console.log(response.data);
-            this.fileList = [];
-            that.caption = response.data
+            that.data.push({
+              imageName : that.currentImage.name,
+              caption : response.data,
+              imageSize : that.currentImage.size,
+              rtt : rtt + "ms",
+              throughput : (that.currentImage.size/(rtt * 1024)) + "kb/s"
+            })
         })
         .catch((e) => {
             console.log(e);
         });
       
-      // todo: 
-      // var time_after = 
-      // rtt = ....
-
-      // todo: calculate throughput
-      
-
-
-      
-    //   UploadService.upload(this.currentImage)
-    //     .then((response) => {
-    //       this.message = response.data.message;
-    //       return UploadService.getFiles();
-    //     })
-    //     .then((images) => {
-    //       this.imageInfos = images.data;
-    //     })
-    //     .catch((err) => {
-    //       this.progress = 0;
-    //       this.message = "Could not upload the image! " + err;
-    //       this.currentImage = undefined;
-    //     });
     },
   },
 
   mounted() {
-    UploadService.getFiles().then(response => {
-      this.imageInfos= response.data;
-    });
+    // UploadService.getFiles().then(response => {
+    //   this.imageInfos= response.data;
+    // });
+    var that = this
   },
 
 
@@ -187,66 +163,7 @@ export default {
 
 
 <style>
-/* body {
-  font-family: Helvetica Neue, Arial, sans-serif;
-  font-size: 14px;
-  color: #444;
+.ant-table-striped :deep(.table-striped) td {
+  background-color: #fafafa;
 }
-
-table {
-  border: 2px solid #42b983;
-  border-radius: 3px;
-  background-color: #fff;
-}
-
-th {
-  background-color: #42b983;
-  color: rgba(255,255,255,0.66);
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -user-select: none;
-}
-
-td {
-  background-color: #f9f9f9;
-}
-
-th, td {
-  min-width: 120px;
-  padding: 10px 20px;
-}
-
-th.active {
-  color: #fff;
-}
-
-th.active .arrow {
-  opacity: 1;
-}
-
-.arrow {
-  display: inline-block;
-  vertical-align: middle;
-  width: 0;
-  height: 0;
-  margin-left: 5px;
-  opacity: 0.66;
-}
-
-.arrow.asc {
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-bottom: 4px solid #fff;
-}
-
-.arrow.dsc {
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid #fff;
-}
-
-#search {
-  margin-bottom: 10px;
-} */
 </style>

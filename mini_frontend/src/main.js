@@ -4,10 +4,12 @@ import 'bootstrap'
 
 import './assets/main.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import DatePicker from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css'; // or 'ant-design-vue/dist/antd.less'
 
-// import ElementUI from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css';
 
-// Vue.use(ElementUI);
 
-createApp(App).mount('#app')
+
+const app = createApp(App)
+app.use(DatePicker)
+app.mount('#app')

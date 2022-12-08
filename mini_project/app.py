@@ -21,9 +21,15 @@ def upload():
     path = './images/files/1.png'
     f.save(path)
 
-    caption = Service.imageToText(path)
+    # caption = Service.imageToText(path)
+    caption = "this"
 
     return caption
+
+
+@app.route('/getfiles', methods=['GET'])
+def get_files():
+    f = open()
 
 
 if __name__ == '__main__':
