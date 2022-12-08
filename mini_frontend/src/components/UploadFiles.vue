@@ -128,7 +128,7 @@ export default {
       let time_before = new Date().getTime();
 
       axios
-        .post("http://127.0.0.1:5000/upload", this.fileParam)
+        .post("http://10.10.1.1:5000/upload", this.fileParam)
         .then((response) => {
             let rtt = new Date().getTime() - time_before;
             console.log(response.data);
