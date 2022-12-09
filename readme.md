@@ -1,5 +1,12 @@
 ## Setup instruction
 
+
+### geni setup
+
+import the miniProject666_manifest_rspec.xml manifest.
+
+add resources.
+
 ### backend project
 
 ```
