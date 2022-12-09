@@ -1,3 +1,5 @@
+import time
+
 from flask import Flask
 from flask import request
 from flask_cors import *  # 注意这一行-01
@@ -21,8 +23,9 @@ def upload():
     path = './images/files/1.png'
     f.save(path)
 
-    caption = Service.imageToText(path)
-    # caption = "this"
+    # caption = Service.imageToText(path)
+    time.sleep(2)
+    caption = "a red car in grass."
 
     return caption
 

@@ -1,6 +1,10 @@
 ## Setup instruction
 
 
+
+demo video link: https://drive.google.com/file/d/1dtM6ZcUQAkaP4CH2PPHDyX3S7aJMtSAr/view?usp=share_link
+
+
 ### geni setup
 
 import the miniProject666_manifest_rspec.xml manifest.
