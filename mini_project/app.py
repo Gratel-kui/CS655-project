@@ -23,9 +23,8 @@ def upload():
     path = './images/files/1.png'
     f.save(path)
 
-    # caption = Service.imageToText(path)
-    time.sleep(2)
-    caption = "a red car in grass."
+    caption = Service.imageToText(path)
+    # caption = "a red car in grass."
 
     return caption
 
