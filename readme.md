@@ -1,6 +1,6 @@
 ## Setup instruction
 
-
+web application address: http://192.86.139.92:5173/
 
 demo video link: https://drive.google.com/file/d/1dtM6ZcUQAkaP4CH2PPHDyX3S7aJMtSAr/view?usp=share_link
 
